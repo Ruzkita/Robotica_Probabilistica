@@ -1,6 +1,8 @@
 import rclpy
 from rclpy.node import Node
-from sensor_msgs.msg import Image
+from sensor_msgs.msg import Image, LaserScan
+from geometry_msgs.msg import Twist
+from nav_msgs.msg import Odometry
 from cv_bridge import CvBridge
 import sys
 import os
@@ -9,21 +11,37 @@ from importlib import import_module
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 implementacao_opencv = import_module('implementacao_opencv')
-bidirecional_a_star = import_module('bidirecional_a_star')
+apf = import_module('apf')
 
 
 class ImageProcessing(Node):
     def __init__(self):
         super().__init__('image_subscriber')
-        self.subscription = self.create_subscription(Image, '/camera', self.image_callback, 10)
+
+        self.current_position = None
+
+        self.camera_subscription = self.create_subscription(Image, '/camera', self.image_callback, 10)
+        self.lidar_subscription = self.create_subscription(LaserScan, '/scan', self.lidar_callback, 10)
+        self.odom_subscriber = self.create_subscription(Odometry, '/odom', self.odom_callback, 10)   
+        self.position_publisher = self.create_publisher(Twist, '/cmd_vel', 10)
         self.bridge = CvBridge()
 
     def image_callback(self, msg):
-        try:
-            cv_image = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
-            implementacao_opencv.main(cv_image)
-        except Exception as e:
-            self.get_logger().error(f"Erro: {e}")
+        cv_image = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
+        implementacao_opencv.main(cv_image)
+    
+    def odom_callback(self, msg):
+        position = msg.pose.pose.position
+        self.current_position = position
+    
+    def lidar_callback(self, msg):
+        lidar_data = msg.range
+        goal = [5, 5]
+        forces = apf.main(self.current_position, goal, lidar_data)
+        cmd_vel = Twist()
+        cmd_vel
+
+        
 
 def main(args=None):
     rclpy.init(args=args)
