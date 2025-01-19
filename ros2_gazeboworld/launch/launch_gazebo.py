@@ -4,6 +4,7 @@ from launch.actions import DeclareLaunchArgument, ExecuteProcess
 from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
+import os
 
 def generate_launch_description():
     # Definição do caminho do arquivo de mundo
@@ -12,6 +13,7 @@ def generate_launch_description():
         'world',
         'meu_mundo.sdf'
     ])
+    
 
     return LaunchDescription([
         DeclareLaunchArgument(

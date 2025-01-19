@@ -11,7 +11,7 @@ from importlib import import_module
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 implementacao_opencv = import_module('implementacao_opencv')
-apf = import_module('apf')
+#apf = import_module('apf')
 
 
 class ImageProcessing(Node):
@@ -37,7 +37,7 @@ class ImageProcessing(Node):
     def lidar_callback(self, msg):
         lidar_data = msg.range
         goal = [5, 5]
-        forces = apf.main(self.current_position, goal, lidar_data)
+        #forces = apf.main(self.current_position, goal, lidar_data)
         cmd_vel = Twist()
         cmd_vel
 
