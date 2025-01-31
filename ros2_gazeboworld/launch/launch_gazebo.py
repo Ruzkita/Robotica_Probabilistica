@@ -4,7 +4,6 @@ from launch.actions import DeclareLaunchArgument, ExecuteProcess
 from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
-import os
 
 def generate_launch_description():
     # Definição do caminho do arquivo de mundo
@@ -13,7 +12,6 @@ def generate_launch_description():
         'world',
         'meu_mundo.sdf'
     ])
-    
 
     return LaunchDescription([
         DeclareLaunchArgument(
@@ -29,11 +27,26 @@ def generate_launch_description():
             output='screen'
         ),
 
-        # Iniciar a ponte entre o Gazebo e o ROS 2
+        # Inicia as pontes entre o gazebo e o ros2
         ExecuteProcess(
             cmd=['ros2', 'run', 'ros_gz_bridge', 'parameter_bridge', '/camera@sensor_msgs/msg/Image[ignition.msgs.Image'],
             output='screen'
         ),
+        ExecuteProcess(
+            cmd=['ros2', 'run', 'ros_gz_bridge', 'parameter_bridge', '/model/meu_carrinho/odometry@nav_msgs/msg/Odometry[ignition.msgs.Odometry'],
+            output='screen'
+        ),
+        ExecuteProcess(
+            cmd=['ros2', 'run', 'ros_gz_bridge', 'parameter_bridge', '/lidar@sensor_msgs/msg/LaserScan[ignition.msgs.LaserScan'],
+            output='screen'
+        ),
+        ExecuteProcess(
+            cmd=['ros2', 'run', 'ros_gz_bridge', 'parameter_bridge', '/cmd_vel@geometry_msgs/msg/Twist@ignition.msgs.Twist'],
+            output='screen'
+        ),
+        
+        
+        
         
         # Iniciar o script ros2_bridge
         Node(
