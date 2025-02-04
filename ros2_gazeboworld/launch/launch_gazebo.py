@@ -29,15 +29,15 @@ def generate_launch_description():
 
         # Inicia as pontes entre o gazebo e o ros2
         ExecuteProcess(
-            cmd=['ros2', 'run', 'ros_gz_bridge', 'parameter_bridge', '/camera@sensor_msgs/msg/Image[ignition.msgs.Image'],
+            cmd=['ros2', 'run', 'ros_gz_bridge', 'parameter_bridge', '/camera@sensor_msgs/msg/Image@ignition.msgs.Image'],
             output='screen'
         ),
         ExecuteProcess(
-            cmd=['ros2', 'run', 'ros_gz_bridge', 'parameter_bridge', '/model/meu_carrinho/odometry@nav_msgs/msg/Odometry[ignition.msgs.Odometry'],
+            cmd=['ros2', 'run', 'ros_gz_bridge', 'parameter_bridge', '/model/meu_carrin/odometry@nav_msgs/msg/Odometry@ignition.msgs.Odometry'],
             output='screen'
         ),
         ExecuteProcess(
-            cmd=['ros2', 'run', 'ros_gz_bridge', 'parameter_bridge', '/lidar@sensor_msgs/msg/LaserScan[ignition.msgs.LaserScan'],
+            cmd=['ros2', 'run', 'ros_gz_bridge', 'parameter_bridge', '/lidar@sensor_msgs/msg/LaserScan@ignition.msgs.LaserScan'],
             output='screen'
         ),
         ExecuteProcess(
