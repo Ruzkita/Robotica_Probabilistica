@@ -56,7 +56,7 @@ class ImageProcessing(Node):
             return
 
         lidar_data = msg.ranges
-        goal = [-5, 5]
+        goal = [7, 0]
 
         # Pegando os parâmetros necessários do msg
         angle_min = msg.angle_min
