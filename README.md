@@ -29,5 +29,5 @@ As a bonus in the course, students will be introduced to key concepts in compute
 With this knowledge, they will be fully capable of developing their own basic obstacle avoidance and data acquisition scripts, and testing them within their simulated environments.
 
 ## References
-https://docs.ros.org/en/humble/Tutorials.html;
+https://docs.ros.org/en/humble/Tutorials.html <br>
 https://gazebosim.org/docs/latest/building_robot/
