@@ -29,18 +29,24 @@ As a bonus in the course, students will be introduced to key concepts in **compu
 With this knowledge, they will be fully capable of developing their own basic **obstacle avoidance** and **data acquisition** scripts, and testing them within their simulated environments.
 
 ## How to use
-To use this repository, first you need to clone it into your ROS2 workspace
+In order to use this repository, it's very important to know that it was created using the ROS 2 Humble distribution. Therefore, some functionalities might not work properly if you are using a different distribution.
+To get started, clone this repository into your ROS 2 workspace using:
 ```bash
 git clone https://github.com/Ruzkita/Robotica_Probabilistica
 ```
-then, build and source your workspace.
+You also need to install all the required libraries to run the script. To do that, open a terminal in the cloned repository and run:
+```bash
+pip install -r requirements.txt
+sudo apt install ros-humble-cv-bridge
+```
+Then, build and source your workspace:
 ```bash
 colcon build
 source install/setup.bash
 ```
-After this, you will be able to launch the simulation using
+After this, you will be able to launch the simulation using:
 ```bash
-ros2 launch 
+ros2 launch ros2_gazeboworld launch_gazebo.py
 ```
 
 ## References
