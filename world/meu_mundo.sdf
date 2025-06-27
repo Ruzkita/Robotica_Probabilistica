@@ -2,7 +2,7 @@
 <sdf version="1.8">
     <world name="meu_mundo">
         <include> 
-            <uri>file://../world/meu_robo.sdf</uri> <!-- Caminho relativo --> 
+            <uri>model://meu_robo</uri> <!-- Caminho relativo --> 
             <pose>0 0 0 0 0 0</pose> <!-- Ajuste a posição inicial --> 
         </include>
 

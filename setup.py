@@ -14,6 +14,7 @@ setup(
         ('share/' + package_name + '/launch', glob('launch/*.py')),
         ('lib/' + package_name, glob('scripts/*.py')),  
         ('share/' + package_name + '/world', glob('world/*.sdf')),
+        ('share/' + package_name + '/models/meu_robo', glob('models/meu_robo/*')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
