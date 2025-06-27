@@ -10,7 +10,7 @@ import cv2 as cv
 from importlib import import_module
 import transforms3d
 import numpy as np
-import math
+
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 implementacao_opencv = import_module('implementacao_opencv')
