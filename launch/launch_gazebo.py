@@ -43,7 +43,7 @@ def generate_launch_description():
         ),
         ExecuteProcess(
             cmd=['ros2', 'run', 'ros_gz_bridge', 'parameter_bridge',
-                 '/model/meu_carrin/odometry@nav_msgs/msg/Odometry@ignition.msgs.Odometry'],
+                '/world/meu_mundo/dynamic_pose/info@geometry_msgs/msg/PoseArray@ignition.msgs.Pose_V'],
             output='screen'
         ),
         ExecuteProcess(
